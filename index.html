@@ -4,335 +4,495 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kyo Dash — Shop</title>
-
+<meta name="theme-color" content="#0b0d13">
+<title>KYO — Player Market</title>
 <style>
 :root {
-  --bg: #070b18;
-  --card: #111b35;
-  --blue: #2768ff;
-  --cyan: #43e6ff;
-  --text: #f3f6ff;
-  --muted: #a7b5d5;
-  --gold: #ffcf62;
+  --bg: #0b0d13;
+  --panel: #12151e;
+  --line: #272c39;
+  --text: #f1f3f8;
+  --muted: #9299aa;
+  --blue: #7893ff;
+  --gold: #d7b76f;
 }
-
-* {
-  box-sizing: border-box;
-}
-
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: Arial, sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Arial, sans-serif;
 }
-
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+.wrap { min-height: 100vh; }
 header {
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #24365a;
-}
-
-.logo {
-  font-size: 23px;
-  font-weight: 900;
-  color: var(--cyan);
-}
-
-.balance {
-  background: #111b35;
-  border: 1px solid #30436b;
-  border-radius: 12px;
-  padding: 10px 14px;
-}
-
-main {
-  max-width: 1000px;
+  max-width: 1120px;
   margin: auto;
-  padding: 25px 18px;
+  height: 78px;
+  padding: 0 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ffffff0d;
 }
-
-.hero {
-  text-align: center;
-  padding: 35px 0;
-}
-
-.hero h1 {
-  font-size: clamp(35px, 7vw, 60px);
-  margin-bottom: 12px;
-}
-
-.hero h1 span {
-  color: var(--cyan);
-}
-
-.hero p {
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-h2 {
-  margin-top: 35px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.card {
-  background: linear-gradient(145deg, #152343, var(--card));
-  border: 1px solid #2b406c;
-  border-radius: 20px;
-  padding: 22px;
-}
-
-.card.vip {
-  border-color: #b88b36;
-}
-
-.icon {
-  font-size: 45px;
-  margin-bottom: 15px;
-}
-
-.card h3 {
-  margin: 8px 0;
-}
-
-.card p {
-  color: var(--muted);
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 850;
+  letter-spacing: 3px;
   font-size: 14px;
-  line-height: 1.5;
-  min-height: 42px;
 }
-
-.price {
-  font-size: 27px;
-  font-weight: bold;
-  margin: 20px 0;
-}
-
-button {
-  width: 100%;
-  padding: 14px;
-  border: 0;
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #52618b;
   border-radius: 11px;
-  background: var(--blue);
-  color: white;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
+  color: #a9b9ff;
+  background: #171d2d;
+  font-size: 19px;
 }
-
-button:active {
-  transform: scale(.98);
+.logo small {
+  display: block;
+  color: #747d91;
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-top: 5px;
 }
-
-.vip button {
-  background: linear-gradient(90deg, #a66a14, #e8b943);
-  color: #17100a;
+nav { display: flex; gap: 27px; }
+nav a { color: #a2a9b9; font-size: 12px; }
+nav a:hover { color: white; }
+.account {
+  border: 1px solid var(--line);
+  padding: 9px 13px;
+  border-radius: 8px;
+  color: #b4bdd3;
+  font-size: 11px;
 }
-
-.notice {
-  margin: 30px 0;
-  padding: 17px;
-  border: 1px solid #30436b;
-  border-radius: 14px;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.6;
+main { max-width: 1070px; margin: auto; padding: 0 25px 70px; }
+.hero {
+  padding: 76px 0 66px;
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  align-items: center;
+  gap: 25px;
 }
-
-footer {
-  text-align: center;
-  padding: 25px;
-  color: #71809f;
+.kicker {
+  color: #91a4ed;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+h1 {
+  font-size: clamp(43px, 6vw, 70px);
+  letter-spacing: -4px;
+  line-height: 1;
+  margin: 22px 0;
+}
+h1 span { color: #849cff; }
+.intro {
+  color: #969daf;
+  font-size: 14px;
+  line-height: 1.9;
+  max-width: 440px;
+}
+.hero-buttons { display: flex; align-items: center; gap: 22px; margin-top: 28px; }
+.primary {
+  display: inline-block;
+  border: 0;
+  border-radius: 7px;
+  background: #718aff;
+  color: #0c1020;
+  padding: 13px 17px;
+  font-weight: 750;
   font-size: 12px;
 }
-
-.modal-bg {
+.primary:hover { background: #91a4ff; }
+.sub-link { color: #a9b0c0; font-size: 12px; }
+.art {
+  min-height: 250px;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+.ring {
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  border: 1px solid #7388db25;
+  border-radius: 50%;
+  box-shadow: 0 0 0 28px #7388db09, 0 0 0 55px #7388db05;
+}
+.cube {
+  width: 104px;
+  height: 104px;
+  border-radius: 20px;
+  background: linear-gradient(140deg,#a0b3ff,#4a64c7);
+  border: 1px solid #c2ceff;
+  box-shadow: 0 25px 60px #526cce35;
+  transform: rotate(-8deg);
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+.cube:after {
+  content: "K";
+  font-size: 43px;
+  font-weight: 900;
+  color: white;
+}
+.art-label {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 9px;
+  color: #65708a;
+  letter-spacing: 2px;
+}
+hr { border: 0; border-top: 1px solid #ffffff12; }
+.section { padding-top: 34px; }
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 22px;
+  gap: 15px;
+}
+.section-head h2 {
+  font-size: 25px;
+  letter-spacing: -1px;
+  margin: 9px 0 0;
+}
+.section-head p { font-size: 12px; color: var(--muted); margin-bottom: 0; }
+.count { font-size: 10px; color: #747d91; letter-spacing: 1px; }
+.products {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+}
+.product {
+  background: linear-gradient(145deg,#151923,#10131a);
+  border: 1px solid #ffffff12;
+  border-radius: 12px;
+  padding: 21px;
+  transition: border-color .2s, transform .2s;
+}
+.product:hover { border-color: #718aff70; transform: translateY(-3px); }
+.product-top { display: flex; justify-content: space-between; align-items: center; }
+.item-icon {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #ffffff16;
+  background: #ffffff05;
+  border-radius: 10px;
+  font-size: 21px;
+  color: #b7c4ff;
+}
+.tag {
+  color: #929bad;
+  font-size: 9px;
+  letter-spacing: 1px;
+  border: 1px solid #ffffff18;
+  border-radius: 4px;
+  padding: 6px 8px;
+}
+.product h3 { font-size: 16px; margin: 20px 0 8px; }
+.product p {
+  font-size: 12px;
+  color: #9098aa;
+  line-height: 1.7;
+  min-height: 40px;
+}
+.purchase {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+  margin-top: 22px;
+}
+.price { font-size: 21px; font-weight: 800; letter-spacing: -.5px; }
+.price small { display: block; font-size: 10px; color: #7f8798; font-weight: 400; margin-top: 4px; }
+.buy {
+  border: 1px solid #43537f;
+  background: #222c46;
+  color: #e0e6ff;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.buy:hover { background: #304064; }
+.vip {
+  margin-top: 15px;
+  border: 1px solid #b59a5b45;
+  border-radius: 12px;
+  padding: 24px;
+  background: linear-gradient(105deg,#211e18,#14151a 75%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.vip-info { display: flex; align-items: center; gap: 17px; }
+.vip-icon {
+  width: 54px;
+  height: 54px;
+  border: 1px solid #d7b76f55;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font-size: 26px;
+}
+.vip h3 { margin: 0 0 7px; font-size: 17px; }
+.vip p { color: #aaa18d; font-size: 12px; line-height: 1.6; margin: 0; }
+.vip .price { color: #ead19a; }
+.vip .buy { background: #d7b76f; border-color: #d7b76f; color: #21190b; padding: 12px 15px; }
+.details {
+  margin-top: 45px;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 22px;
+}
+.detail { border-top: 1px solid #ffffff16; padding-top: 16px; }
+.detail strong { font-size: 11px; display: block; margin-bottom: 9px; }
+.detail p { font-size: 11px; color: #858da0; line-height: 1.8; margin: 0; }
+footer {
+  border-top: 1px solid #ffffff10;
+  padding: 23px;
+  color: #687185;
+  font-size: 10px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.overlay {
   display: none;
   position: fixed;
   inset: 0;
-  z-index: 10;
-  background: #000c;
+  z-index: 5;
+  background: #05070bdc;
+  backdrop-filter: blur(8px);
   align-items: center;
   justify-content: center;
   padding: 20px;
 }
-
-.modal {
+.overlay.open { display: flex; }
+.dialog {
   width: 100%;
-  max-width: 400px;
+  max-width: 390px;
+  background: #151923;
+  border: 1px solid #ffffff1b;
+  border-radius: 13px;
   padding: 25px;
-  border-radius: 20px;
-  border: 1px solid #30436b;
-  background: #111b35;
 }
-
-.modal p {
-  color: var(--muted);
-  line-height: 1.6;
+.dialog-head { display: flex; justify-content: space-between; align-items: center; }
+.dialog-head span { color: #91a4ed; font-size: 9px; letter-spacing: 2px; }
+.close { background: none; border: 0; color: #a6adbd; font-size: 24px; }
+.dialog h2 { margin: 20px 0 8px; font-size: 23px; }
+.dialog p { font-size: 12px; color: #9ca4b5; line-height: 1.7; }
+.order {
+  margin: 20px 0;
+  padding: 15px 0;
+  border-top: 1px solid #ffffff16;
+  border-bottom: 1px solid #ffffff16;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 12px;
 }
-
-.close {
-  margin-top: 12px;
-  background: #263653;
+.dialog .primary { width: 100%; }
+.fine-print { font-size: 10px!important; color: #717b90!important; }
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translate(-50%,15px);
+  opacity: 0;
+  background: #1b263e;
+  border: 1px solid #526899;
+  color: white;
+  padding: 12px 17px;
+  border-radius: 8px;
+  font-size: 12px;
+  transition: .2s;
+  pointer-events: none;
 }
-
-@media (max-width: 700px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .card p {
-    min-height: 0;
-  }
+.toast.show { opacity: 1; transform: translate(-50%,0); }
+@media(max-width:720px) {
+  header { height: 67px; padding: 0 17px; }
+  nav { display: none; }
+  .account { font-size: 10px; padding: 8px; }
+  main { padding: 0 17px 45px; }
+  .hero { grid-template-columns: 1fr; padding: 34px 0 35px; gap: 0; }
+  .art { min-height: 160px; grid-row: 1; }
+  .ring { width: 150px; height: 150px; }
+  .cube { width: 72px; height: 72px; border-radius: 15px; }
+  .cube:after { font-size: 31px; }
+  .art-label { bottom: 0; font-size: 8px; }
+  h1 { font-size: 46px; letter-spacing: -2.5px; margin: 19px 0; }
+  .intro { font-size: 13px; }
+  .section-head h2 { font-size: 22px; }
+  .count { display: none; }
+  .products { grid-template-columns: 1fr; gap: 10px; }
+  .product { padding: 17px; }
+  .product h3 { margin-top: 15px; }
+  .product p { min-height: 0; }
+  .purchase { margin-top: 16px; }
+  .vip { align-items: stretch; flex-direction: column; padding: 18px; }
+  .vip-info { align-items: flex-start; }
+  .vip-icon { width: 45px; height: 45px; flex-shrink: 0; }
+  .vip-purchase { display: flex; justify-content: space-between; align-items: center; }
+  .details { grid-template-columns: 1fr; gap: 0; }
+  .detail { padding: 15px 0; }
 }
 </style>
 </head>
-
 <body>
-
+<div class="wrap" id="top">
 <header>
-  <div class="logo">⚡ KYO DASH</div>
-  <div class="balance">🪙 Магазин</div>
+  <a class="logo" href="#top">
+    <span class="logo-icon">K</span>
+    <span>KYO<small>PLAYER MARKET</small></span>
+  </a>
+  <nav>
+    <a href="#coins">Монеты</a>
+    <a href="#vip">VIP</a>
+    <a href="#details">Информация</a>
+  </nav>
+  <div class="account">PLAYER STORE&nbsp; · &nbsp;KYO</div>
 </header>
 
 <main>
+<section class="hero">
+  <div>
+    <div class="kicker">KYO DASH / DIGITAL GOODS</div>
+    <h1>Играй по-своему.<br><span>Выбирай своё.</span></h1>
+    <p class="intro">Игровая валюта и особый статус для твоего профиля. Всё необходимое — в одном месте, без лишнего шума.</p>
+    <div class="hero-buttons">
+      <a class="primary" href="#coins">Перейти в магазин ↗</a>
+      <a class="sub-link" href="#details">Подробнее</a>
+    </div>
+  </div>
+  <div class="art" aria-hidden="true">
+    <div class="ring"></div>
+    <div class="cube"></div>
+    <div class="art-label">KYO / PLAYER ONE</div>
+  </div>
+</section>
 
-  <section class="hero">
-    <h1>KYO <span>SHOP</span></h1>
-    <p>
-      Покупай монеты и VIP для своего аккаунта.
-      Твой стиль. Твои правила.
-    </p>
-  </section>
+<hr>
 
-  <h2>🪙 Наборы монет</h2>
-
-  <section class="grid">
-
-    <article class="card">
-      <div class="icon">🪙</div>
-      <h3>Стартовый набор</h3>
-      <p>500 монет для начала игры.</p>
-      <div class="price">₼1.99</div>
-      <button onclick="buy('coins500')">
-        Купить
-      </button>
-    </article>
-
-    <article class="card">
-      <div class="icon">💎</div>
-      <h3>Большой набор</h3>
-      <p>1500 монет для новых возможностей.</p>
-      <div class="price">₼4.99</div>
-      <button onclick="buy('coins1500')">
-        Купить
-      </button>
-    </article>
-
-    <article class="card">
-      <div class="icon">✨</div>
-      <h3>Мега-набор</h3>
-      <p>4000 монет для активных игроков.</p>
-      <div class="price">₼9.99</div>
-      <button onclick="buy('coins4000')">
-        Купить
-      </button>
-    </article>
-
-  </section>
-
-  <h2>👑 VIP-доступ</h2>
-
-  <section class="grid">
-
-    <article class="card vip">
-      <div class="icon">👑</div>
-      <h3>Kyo VIP</h3>
-      <p>VIP-статус на 30 дней.</p>
-      <div class="price">₼3.99</div>
-      <button onclick="buy('vip30')">
-        Купить VIP
-      </button>
-    </article>
-
-  </section>
-
-  <div class="notice">
-    🔒 <strong>Безопасность платежей</strong><br>
-    Магазин пока демонстрационный.
-    Реальная оплата и выдача товаров ещё не подключены.
-    Не вводи данные банковской карты в демонстрационную форму.
+<section class="section" id="coins">
+  <div class="section-head">
+    <div>
+      <div class="kicker">01 — ВАЛЮТА</div>
+      <h2>Монеты</h2>
+      <p>Выбери набор, который подходит тебе.</p>
+    </div>
+    <div class="count">COIN PACKS / 03</div>
   </div>
 
+  <div class="products">
+    <article class="product">
+      <div class="product-top"><div class="item-icon">◈</div><span class="tag">START</span></div>
+      <h3>Starter Pack</h3>
+      <p>500 монет для первых покупок.</p>
+      <div class="purchase"><div class="price">₼1.99<small>Разовая покупка</small></div><button class="buy" data-id="coins500">Выбрать ↗</button></div>
+    </article>
+    <article class="product">
+      <div class="product-top"><div class="item-icon">✧</div><span class="tag">POPULAR</span></div>
+      <h3>Boost Pack</h3>
+      <p>1 500 монет для новых возможностей.</p>
+      <div class="purchase"><div class="price">₼4.99<small>Разовая покупка</small></div><button class="buy" data-id="coins1500">Выбрать ↗</button></div>
+    </article>
+    <article class="product">
+      <div class="product-top"><div class="item-icon">✦</div><span class="tag">MAX</span></div>
+      <h3>Ultra Pack</h3>
+      <p>4 000 монет для активных игроков.</p>
+      <div class="purchase"><div class="price">₼9.99<small>Разовая покупка</small></div><button class="buy" data-id="coins4000">Выбрать ↗</button></div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="vip">
+  <div class="section-head">
+    <div><div class="kicker">02 — ОСОБЫЙ ДОСТУП</div><h2>VIP Membership</h2><p>Особый статус для твоего игрового профиля.</p></div>
+  </div>
+  <div class="vip">
+    <div class="vip-info">
+      <div class="vip-icon">♛</div>
+      <div><h3>Kyo VIP · 30 дней</h3><p>Особый статус. Активация после подтверждения оплаты.</p></div>
+    </div>
+    <div class="vip-purchase"><div class="price">₼3.99</div><button class="buy" data-id="vip30">Получить VIP ↗</button></div>
+  </div>
+</section>
+
+<section class="details" id="details">
+  <div class="detail"><strong>01 — Оплата</strong><p>Платёж будет обрабатываться защищённым платёжным провайдером. Карточные данные не хранятся на сайте.</p></div>
+  <div class="detail"><strong>02 — Выдача товаров</strong><p>Монеты и VIP должны выдаваться только после серверного подтверждения оплаты.</p></div>
+  <div class="detail"><strong>03 — Статус магазина</strong><p>Это демонстрационный интерфейс. Реальные платежи и подключение аккаунтов ещё не настроены.</p></div>
+</section>
 </main>
-
-<footer>
-  © Kyo Dash · Player Store
-</footer>
-
-<div class="modal-bg" id="modal">
-  <div class="modal">
-    <h2 id="modal-title">Заказ</h2>
-    <p id="modal-text"></p>
-    <button class="close" onclick="closeModal()">
-      Закрыть
-    </button>
-  </div>
+<footer>© KYO DASH · PLAYER MARKET</footer>
 </div>
 
+<div class="overlay" id="overlay">
+  <div class="dialog" role="dialog" aria-modal="true">
+    <div class="dialog-head"><span>ОФОРМЛЕНИЕ / KYO</span><button class="close" id="close" aria-label="Закрыть">×</button></div>
+    <h2 id="dialog-title">Подтверди выбор</h2>
+    <p id="dialog-description"></p>
+    <div class="order"><span id="order-name"></span><strong id="order-price"></strong></div>
+    <button class="primary" id="continue">Продолжить</button>
+    <p class="fine-print">Демо-режим: платёж не списывается, товар не выдаётся.</p>
+  </div>
+</div>
+<div class="toast" id="toast">Реальная оплата пока не подключена.</div>
+
 <script>
-const products = {
-  coins500: {
-    name: "500 монет",
-    price: "₼1.99"
-  },
-  coins1500: {
-    name: "1500 монет",
-    price: "₼4.99"
-  },
-  coins4000: {
-    name: "4000 монет",
-    price: "₼9.99"
-  },
-  vip30: {
-    name: "Kyo VIP на 30 дней",
-    price: "₼3.99"
-  }
+const items = {
+  coins500: {name:"Starter Pack · 500 монет", price:"₼1.99", description:"Покупка игрового набора из 500 монет."},
+  coins1500: {name:"Boost Pack · 1 500 монет", price:"₼4.99", description:"Покупка игрового набора из 1 500 монет."},
+  coins4000: {name:"Ultra Pack · 4 000 монет", price:"₼9.99", description:"Покупка игрового набора из 4 000 монет."},
+  vip30: {name:"Kyo VIP · 30 дней", price:"₼3.99", description:"VIP-доступ к профилю на 30 дней."}
 };
-
-function buy(id) {
-  const product = products[id];
-
-  if (!product) return;
-
-  document.getElementById("modal-title").textContent =
-    product.name;
-
-  document.getElementById("modal-text").textContent =
-    "Цена: " + product.price +
-    ". Это демонстрация магазина. " +
-    "Настоящий платёж пока не подключён.";
-
-  document.getElementById("modal").style.display = "flex";
+const overlay = document.getElementById("overlay");
+let toastTimer;
+document.querySelectorAll("[data-id]").forEach(button => {
+  button.addEventListener("click", () => {
+    const item = items[button.dataset.id];
+    document.getElementById("dialog-title").textContent = "Подтверди выбор";
+    document.getElementById("dialog-description").textContent = item.description;
+    document.getElementById("order-name").textContent = item.name;
+    document.getElementById("order-price").textContent = item.price;
+    overlay.classList.add("open");
+    document.body.style.overflow = "hidden";
+  });
+});
+function closeDialog() {
+  overlay.classList.remove("open");
+  document.body.style.overflow = "";
 }
-
-function closeModal() {
-  document.getElementById("modal").style.display = "none";
-}
-
-document.getElementById("modal").addEventListener("click", function(e) {
-  if (e.target === this) closeModal();
+document.getElementById("close").addEventListener("click", closeDialog);
+overlay.addEventListener("click", event => {
+  if (event.target === overlay) closeDialog();
+});
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeDialog();
+});
+document.getElementById("continue").addEventListener("click", () => {
+  closeDialog();
+  const toast = document.getElementById("toast");
+  toast.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
 });
 </script>
-
 </body>
 </html>
