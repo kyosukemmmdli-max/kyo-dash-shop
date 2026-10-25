@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kyo Dash — Shop</title>
+
+<style>
+:root {
+  --bg: #070b18;
+  --card: #111b35;
+  --blue: #2768ff;
+  --cyan: #43e6ff;
+  --text: #f3f6ff;
+  --muted: #a7b5d5;
+  --gold: #ffcf62;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+}
+
+header {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #24365a;
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: 900;
+  color: var(--cyan);
+}
+
+.balance {
+  background: #111b35;
+  border: 1px solid #30436b;
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 25px 18px;
+}
+
+.hero {
+  text-align: center;
+  padding: 35px 0;
+}
+
+.hero h1 {
+  font-size: clamp(35px, 7vw, 60px);
+  margin-bottom: 12px;
+}
+
+.hero h1 span {
+  color: var(--cyan);
+}
+
+.hero p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+h2 {
+  margin-top: 35px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.card {
+  background: linear-gradient(145deg, #152343, var(--card));
+  border: 1px solid #2b406c;
+  border-radius: 20px;
+  padding: 22px;
+}
+
+.card.vip {
+  border-color: #b88b36;
+}
+
+.icon {
+  font-size: 45px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  margin: 8px 0;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 42px;
+}
+
+.price {
+  font-size: 27px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  border: 0;
+  border-radius: 11px;
+  background: var(--blue);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(.98);
+}
+
+.vip button {
+  background: linear-gradient(90deg, #a66a14, #e8b943);
+  color: #17100a;
+}
+
+.notice {
+  margin: 30px 0;
+  padding: 17px;
+  border: 1px solid #30436b;
+  border-radius: 14px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #71809f;
+  font-size: 12px;
+}
+
+.modal-bg {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: #000c;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal {
+  width: 100%;
+  max-width: 400px;
+  padding: 25px;
+  border-radius: 20px;
+  border: 1px solid #30436b;
+  background: #111b35;
+}
+
+.modal p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.close {
+  margin-top: 12px;
+  background: #263653;
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card p {
+    min-height: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">⚡ KYO DASH</div>
+  <div class="balance">🪙 Магазин</div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <h1>KYO <span>SHOP</span></h1>
+    <p>
+      Покупай монеты и VIP для своего аккаунта.
+      Твой стиль. Твои правила.
+    </p>
+  </section>
+
+  <h2>🪙 Наборы монет</h2>
+
+  <section class="grid">
+
+    <article class="card">
+      <div class="icon">🪙</div>
+      <h3>Стартовый набор</h3>
+      <p>500 монет для начала игры.</p>
+      <div class="price">₼1.99</div>
+      <button onclick="buy('coins500')">
+        Купить
+      </button>
+    </article>
+
+    <article class="card">
+      <div class="icon">💎</div>
+      <h3>Большой набор</h3>
+      <p>1500 монет для новых возможностей.</p>
+      <div class="price">₼4.99</div>
+      <button onclick="buy('coins1500')">
+        Купить
+      </button>
+    </article>
+
+    <article class="card">
+      <div class="icon">✨</div>
+      <h3>Мега-набор</h3>
+      <p>4000 монет для активных игроков.</p>
+      <div class="price">₼9.99</div>
+      <button onclick="buy('coins4000')">
+        Купить
+      </button>
+    </article>
+
+  </section>
+
+  <h2>👑 VIP-доступ</h2>
+
+  <section class="grid">
+
+    <article class="card vip">
+      <div class="icon">👑</div>
+      <h3>Kyo VIP</h3>
+      <p>VIP-статус на 30 дней.</p>
+      <div class="price">₼3.99</div>
+      <button onclick="buy('vip30')">
+        Купить VIP
+      </button>
+    </article>
+
+  </section>
+
+  <div class="notice">
+    🔒 <strong>Безопасность платежей</strong><br>
+    Магазин пока демонстрационный.
+    Реальная оплата и выдача товаров ещё не подключены.
+    Не вводи данные банковской карты в демонстрационную форму.
+  </div>
+
+</main>
+
+<footer>
+  © Kyo Dash · Player Store
+</footer>
+
+<div class="modal-bg" id="modal">
+  <div class="modal">
+    <h2 id="modal-title">Заказ</h2>
+    <p id="modal-text"></p>
+    <button class="close" onclick="closeModal()">
+      Закрыть
+    </button>
+  </div>
+</div>
+
+<script>
+const products = {
+  coins500: {
+    name: "500 монет",
+    price: "₼1.99"
+  },
+  coins1500: {
+    name: "1500 монет",
+    price: "₼4.99"
+  },
+  coins4000: {
+    name: "4000 монет",
+    price: "₼9.99"
+  },
+  vip30: {
+    name: "Kyo VIP на 30 дней",
+    price: "₼3.99"
+  }
+};
+
+function buy(id) {
+  const product = products[id];
+
+  if (!product) return;
+
+  document.getElementById("modal-title").textContent =
+    product.name;
+
+  document.getElementById("modal-text").textContent =
+    "Цена: " + product.price +
+    ". Это демонстрация магазина. " +
+    "Настоящий платёж пока не подключён.";
+
+  document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+
+document.getElementById("modal").addEventListener("click", function(e) {
+  if (e.target === this) closeModal();
+});
+</script>
+
+</body>
+</html>
